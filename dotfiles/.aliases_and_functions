@@ -1,0 +1,90 @@
+########################################
+# File navigation
+########################################
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# Folder shortcuts
+alias s="cd ~/s"
+alias setup="cd ~/s/setup"
+alias dl="cd ~/Downloads"
+alias dk="cd ~/Desktop"
+
+# mkdir and cd into
+function ckdir(){
+    mkdir "$1" && cd "$1"
+}
+
+# Copy recursive
+function cpr(){
+    cp -R "$1" "$2"
+}
+
+# Remove recursive
+function rmr(){
+    rm -rf "$1"
+}
+
+########################################
+# Shell
+########################################
+alias szsh="source ~/.zshrc"
+alias ezsh="vim ~/.zshrc"
+
+########################################
+# Git
+########################################
+alias pull="git pull"
+alias ga="git add -A"
+alias gmm="git merge origin/main"
+
+function gcam() {
+    git commit -a -m "$1"
+}
+
+function gc() {
+    git clone $1
+}
+
+function gmb() {
+    git fetch && git merge origin/$1
+}
+
+########################################
+# Tmux
+########################################
+alias mux=tmuxinator
+function tnew() {
+    tmux new -s "$1"
+}
+
+function tkill() {
+    tmux kill-ses -t "$1"
+}
+
+function tatt() {
+    tmux attach -t "$1"
+}
+alias tkilla="tmux kill-session -a && tkill"
+
+########################################
+# Conda
+########################################
+alias pyv="python --version"
+alias pyi="python -i ~/.common_imports.py"
+alias condad="conda deactivate"
+alias condals="conda env list"
+
+function condaa() {
+    conda activate "$1"
+}
+
+function condarm() { 
+    conda remove --name "$1" --all 
+}
+
+function condac() {
+    conda create --name "$1" python=$2 -y
+}
